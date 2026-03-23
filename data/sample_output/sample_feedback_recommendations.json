@@ -1,0 +1,1470 @@
+{
+  "generated_at": "2026-03-23 06:48:59",
+  "total_recommendations": 77,
+  "total_revenue_impact": 578533.03,
+  "recommendations": [
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_22612_5291F3",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "22612",
+      "denial_count": 9,
+      "revenue_impact": 101446.95,
+      "recommendation": "TIMELY FILING PATTERN: 9 claims denied (CO-29) for CIGNA. $101,446.95 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "9 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_27447_C628F1",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "27447",
+      "denial_count": 7,
+      "revenue_impact": 76640.55,
+      "recommendation": "TIMELY FILING PATTERN: 7 claims denied (CO-29) for CIGNA. $76,640.55 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "7 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_43239_84F33C",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "43239",
+      "denial_count": 7,
+      "revenue_impact": 35507.0,
+      "recommendation": "TIMELY FILING PATTERN: 7 claims denied (CO-29) for CIGNA. $35,507.00 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "7 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_BCBS_22612_A48D81",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "BCBS",
+      "carc_code": "97",
+      "affected_cpt": "22612",
+      "denial_count": 2,
+      "revenue_impact": 30527.04,
+      "recommendation": "BUNDLING PATTERN: CPT 22612 denied 2 times for bundling (CO-97/CO-4) by BCBS. $30,527.04 impact. Recommendation: Add CPT 22612 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '22612' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 2x for BCBS"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_96_AETNA_22612_164764",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "COVERAGE",
+      "payer": "AETNA",
+      "carc_code": "96",
+      "affected_cpt": "22612",
+      "denial_count": 2,
+      "revenue_impact": 28426.85,
+      "recommendation": "DENIAL PATTERN (CARC 96): 2 claims denied for AETNA + CPT 22612. $28,426.85 impact. Category: COVERAGE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 96 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_15_HUMANA_22612_1EADFA",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "payer_configs/humana.json",
+      "change_type": "ADD_RULE",
+      "denial_category": "PRIOR_AUTH",
+      "payer": "HUMANA",
+      "carc_code": "15",
+      "affected_cpt": "22612",
+      "denial_count": 2,
+      "revenue_impact": 26899.17,
+      "recommendation": "PRIOR AUTH PATTERN: CPT 22612 denied 2 times for missing prior authorization (CO-15) by HUMANA. $26,899.17 impact. Recommendation: Add 'authorization_number' as a required field for CPT 22612 in humana.json payer config in Project 1. Claims with this CPT and no auth number will be flagged before submission.",
+      "config_change": {
+        "file": "payer_configs/humana.json",
+        "change": {
+          "field": "authorization_number",
+          "error_code": "HUM_AUTH_22612",
+          "message": "HUMANA requires prior authorization for CPT 22612.",
+          "severity": "CRITICAL",
+          "edi_segment": "REF",
+          "condition": "procedure_code == '22612'"
+        },
+        "rationale": "CO-15 prior auth denial observed 2x for HUMANA + CPT 22612"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_50_BCBS_27447_DB09D8",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "MEDICAL_NECESSITY",
+      "payer": "BCBS",
+      "carc_code": "50",
+      "affected_cpt": "27447",
+      "denial_count": 2,
+      "revenue_impact": 20442.02,
+      "recommendation": "MEDICAL NECESSITY PATTERN: CPT 27447 denied 2 times for medical necessity (CO-50/CO-57) by BCBS. $20,442.02 impact. Recommendation: Add CPT 27447 to 'medical_necessity_scrutiny' in routing_configs/cpt_risk.json. Claims with this code will route to REVIEW queue for diagnosis/documentation check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '27447' to risk_categories.medical_necessity_scrutiny.codes",
+        "rationale": "CO-50 medical necessity denial observed 2x for BCBS"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_15_AETNA_22612_745C9A",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "payer_configs/aetna.json",
+      "change_type": "ADD_RULE",
+      "denial_category": "PRIOR_AUTH",
+      "payer": "AETNA",
+      "carc_code": "15",
+      "affected_cpt": "22612",
+      "denial_count": 1,
+      "revenue_impact": 15283.51,
+      "recommendation": "PRIOR AUTH PATTERN: CPT 22612 denied 1 times for missing prior authorization (CO-15) by AETNA. $15,283.51 impact. Recommendation: Add 'authorization_number' as a required field for CPT 22612 in aetna.json payer config in Project 1. Claims with this CPT and no auth number will be flagged before submission.",
+      "config_change": {
+        "file": "payer_configs/aetna.json",
+        "change": {
+          "field": "authorization_number",
+          "error_code": "AET_AUTH_22612",
+          "message": "AETNA requires prior authorization for CPT 22612.",
+          "severity": "CRITICAL",
+          "edi_segment": "REF",
+          "condition": "procedure_code == '22612'"
+        },
+        "rationale": "CO-15 prior auth denial observed 1x for AETNA + CPT 22612"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_CIGNA_27447_AECCBB",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "CIGNA",
+      "carc_code": "97",
+      "affected_cpt": "27447",
+      "denial_count": 1,
+      "revenue_impact": 14878.67,
+      "recommendation": "BUNDLING PATTERN: CPT 27447 denied 1 times for bundling (CO-97/CO-4) by CIGNA. $14,878.67 impact. Recommendation: Add CPT 27447 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '27447' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 1x for CIGNA"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_HUMANA_27447_113A05",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "HUMANA",
+      "carc_code": "97",
+      "affected_cpt": "27447",
+      "denial_count": 1,
+      "revenue_impact": 13628.28,
+      "recommendation": "BUNDLING PATTERN: CPT 27447 denied 1 times for bundling (CO-97/CO-4) by HUMANA. $13,628.28 impact. Recommendation: Add CPT 27447 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '27447' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 1x for HUMANA"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_15_CIGNA_22612_8D16CF",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "payer_configs/cigna.json",
+      "change_type": "ADD_RULE",
+      "denial_category": "PRIOR_AUTH",
+      "payer": "CIGNA",
+      "carc_code": "15",
+      "affected_cpt": "22612",
+      "denial_count": 1,
+      "revenue_impact": 13275.49,
+      "recommendation": "PRIOR AUTH PATTERN: CPT 22612 denied 1 times for missing prior authorization (CO-15) by CIGNA. $13,275.49 impact. Recommendation: Add 'authorization_number' as a required field for CPT 22612 in cigna.json payer config in Project 1. Claims with this CPT and no auth number will be flagged before submission.",
+      "config_change": {
+        "file": "payer_configs/cigna.json",
+        "change": {
+          "field": "authorization_number",
+          "error_code": "CIG_AUTH_22612",
+          "message": "CIGNA requires prior authorization for CPT 22612.",
+          "severity": "CRITICAL",
+          "edi_segment": "REF",
+          "condition": "procedure_code == '22612'"
+        },
+        "rationale": "CO-15 prior auth denial observed 1x for CIGNA + CPT 22612"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_50_CIGNA_27447_29C935",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "MEDICAL_NECESSITY",
+      "payer": "CIGNA",
+      "carc_code": "50",
+      "affected_cpt": "27447",
+      "denial_count": 1,
+      "revenue_impact": 11806.68,
+      "recommendation": "MEDICAL NECESSITY PATTERN: CPT 27447 denied 1 times for medical necessity (CO-50/CO-57) by CIGNA. $11,806.68 impact. Recommendation: Add CPT 27447 to 'medical_necessity_scrutiny' in routing_configs/cpt_risk.json. Claims with this code will route to REVIEW queue for diagnosis/documentation check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '27447' to risk_categories.medical_necessity_scrutiny.codes",
+        "rationale": "CO-50 medical necessity denial observed 1x for CIGNA"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_HUMANA_22612_42C115",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "HUMANA",
+      "carc_code": "18",
+      "affected_cpt": "22612",
+      "denial_count": 1,
+      "revenue_impact": 11127.14,
+      "recommendation": "DENIAL PATTERN (CARC 18): 1 claims denied for HUMANA + CPT 22612. $11,127.14 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_96_BCBS_22612_1EFEFF",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "COVERAGE",
+      "payer": "BCBS",
+      "carc_code": "96",
+      "affected_cpt": "22612",
+      "denial_count": 1,
+      "revenue_impact": 11117.72,
+      "recommendation": "DENIAL PATTERN (CARC 96): 1 claims denied for BCBS + CPT 22612. $11,117.72 impact. Category: COVERAGE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 96 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_96_HUMANA_22612_CF39C6",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "COVERAGE",
+      "payer": "HUMANA",
+      "carc_code": "96",
+      "affected_cpt": "22612",
+      "denial_count": 1,
+      "revenue_impact": 10640.61,
+      "recommendation": "DENIAL PATTERN (CARC 96): 1 claims denied for HUMANA + CPT 22612. $10,640.61 impact. Category: COVERAGE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 96 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_15_BCBS_22612_77B5ED",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "payer_configs/bcbs.json",
+      "change_type": "ADD_RULE",
+      "denial_category": "PRIOR_AUTH",
+      "payer": "BCBS",
+      "carc_code": "15",
+      "affected_cpt": "22612",
+      "denial_count": 1,
+      "revenue_impact": 9738.92,
+      "recommendation": "PRIOR AUTH PATTERN: CPT 22612 denied 1 times for missing prior authorization (CO-15) by BCBS. $9,738.92 impact. Recommendation: Add 'authorization_number' as a required field for CPT 22612 in bcbs.json payer config in Project 1. Claims with this CPT and no auth number will be flagged before submission.",
+      "config_change": {
+        "file": "payer_configs/bcbs.json",
+        "change": {
+          "field": "authorization_number",
+          "error_code": "BCB_AUTH_22612",
+          "message": "BCBS requires prior authorization for CPT 22612.",
+          "severity": "CRITICAL",
+          "edi_segment": "REF",
+          "condition": "procedure_code == '22612'"
+        },
+        "rationale": "CO-15 prior auth denial observed 1x for BCBS + CPT 22612"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_96_MEDICARE_27447_200765",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "COVERAGE",
+      "payer": "MEDICARE",
+      "carc_code": "96",
+      "affected_cpt": "27447",
+      "denial_count": 2,
+      "revenue_impact": 9130.8,
+      "recommendation": "DENIAL PATTERN (CARC 96): 2 claims denied for MEDICARE + CPT 27447. $9,130.80 impact. Category: COVERAGE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 96 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_96_CIGNA_22612_4EAE76",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "COVERAGE",
+      "payer": "CIGNA",
+      "carc_code": "96",
+      "affected_cpt": "22612",
+      "denial_count": 1,
+      "revenue_impact": 8612.98,
+      "recommendation": "DENIAL PATTERN (CARC 96): 1 claims denied for CIGNA + CPT 22612. $8,612.98 impact. Category: COVERAGE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 96 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_AETNA_27447_84D31C",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "AETNA",
+      "carc_code": "97",
+      "affected_cpt": "27447",
+      "denial_count": 1,
+      "revenue_impact": 8519.44,
+      "recommendation": "BUNDLING PATTERN: CPT 27447 denied 1 times for bundling (CO-97/CO-4) by AETNA. $8,519.44 impact. Recommendation: Add CPT 27447 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '27447' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 1x for AETNA"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_BCBS_27447_08FFD9",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "BCBS",
+      "carc_code": "97",
+      "affected_cpt": "27447",
+      "denial_count": 1,
+      "revenue_impact": 8103.92,
+      "recommendation": "BUNDLING PATTERN: CPT 27447 denied 1 times for bundling (CO-97/CO-4) by BCBS. $8,103.92 impact. Recommendation: Add CPT 27447 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '27447' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 1x for BCBS"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_96_BCBS_43239_1965C3",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "COVERAGE",
+      "payer": "BCBS",
+      "carc_code": "96",
+      "affected_cpt": "43239",
+      "denial_count": 1,
+      "revenue_impact": 6647.42,
+      "recommendation": "DENIAL PATTERN (CARC 96): 1 claims denied for BCBS + CPT 43239. $6,647.42 impact. Category: COVERAGE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 96 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_50_BCBS_43239_0E3323",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "MEDICAL_NECESSITY",
+      "payer": "BCBS",
+      "carc_code": "50",
+      "affected_cpt": "43239",
+      "denial_count": 1,
+      "revenue_impact": 6256.77,
+      "recommendation": "MEDICAL NECESSITY PATTERN: CPT 43239 denied 1 times for medical necessity (CO-50/CO-57) by BCBS. $6,256.77 impact. Recommendation: Add CPT 43239 to 'medical_necessity_scrutiny' in routing_configs/cpt_risk.json. Claims with this code will route to REVIEW queue for diagnosis/documentation check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '43239' to risk_categories.medical_necessity_scrutiny.codes",
+        "rationale": "CO-50 medical necessity denial observed 1x for BCBS"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_MEDICARE_22612_0583A3",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "MEDICARE",
+      "carc_code": "97",
+      "affected_cpt": "22612",
+      "denial_count": 1,
+      "revenue_impact": 5654.14,
+      "recommendation": "BUNDLING PATTERN: CPT 22612 denied 1 times for bundling (CO-97/CO-4) by MEDICARE. $5,654.14 impact. Recommendation: Add CPT 22612 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '22612' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 1x for MEDICARE"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_AETNA_43239_2CB5F4",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "AETNA",
+      "carc_code": "18",
+      "affected_cpt": "43239",
+      "denial_count": 1,
+      "revenue_impact": 5405.49,
+      "recommendation": "DENIAL PATTERN (CARC 18): 1 claims denied for AETNA + CPT 43239. $5,405.49 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_15_HUMANA_43239_658DCF",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "payer_configs/humana.json",
+      "change_type": "ADD_RULE",
+      "denial_category": "PRIOR_AUTH",
+      "payer": "HUMANA",
+      "carc_code": "15",
+      "affected_cpt": "43239",
+      "denial_count": 1,
+      "revenue_impact": 5243.29,
+      "recommendation": "PRIOR AUTH PATTERN: CPT 43239 denied 1 times for missing prior authorization (CO-15) by HUMANA. $5,243.29 impact. Recommendation: Add 'authorization_number' as a required field for CPT 43239 in humana.json payer config in Project 1. Claims with this CPT and no auth number will be flagged before submission.",
+      "config_change": {
+        "file": "payer_configs/humana.json",
+        "change": {
+          "field": "authorization_number",
+          "error_code": "HUM_AUTH_43239",
+          "message": "HUMANA requires prior authorization for CPT 43239.",
+          "severity": "CRITICAL",
+          "edi_segment": "REF",
+          "condition": "procedure_code == '43239'"
+        },
+        "rationale": "CO-15 prior auth denial observed 1x for HUMANA + CPT 43239"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_MEDICARE_27447_4B9F5E",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "MEDICARE",
+      "carc_code": "29",
+      "affected_cpt": "27447",
+      "denial_count": 1,
+      "revenue_impact": 5110.14,
+      "recommendation": "TIMELY FILING PATTERN: 1 claims denied (CO-29) for MEDICARE. $5,110.14 lost. Recommendation: Reduce MEDICARE timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for MEDICARE to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for MEDICARE",
+        "rationale": "1 claims exceeded MEDICARE filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_AETNA_43239_DCEFBA",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "AETNA",
+      "carc_code": "97",
+      "affected_cpt": "43239",
+      "denial_count": 1,
+      "revenue_impact": 4943.03,
+      "recommendation": "BUNDLING PATTERN: CPT 43239 denied 1 times for bundling (CO-97/CO-4) by AETNA. $4,943.03 impact. Recommendation: Add CPT 43239 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '43239' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 1x for AETNA"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_15_MEDICARE_27447_B5C57F",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "payer_configs/medicare.json",
+      "change_type": "ADD_RULE",
+      "denial_category": "PRIOR_AUTH",
+      "payer": "MEDICARE",
+      "carc_code": "15",
+      "affected_cpt": "27447",
+      "denial_count": 1,
+      "revenue_impact": 4660.51,
+      "recommendation": "PRIOR AUTH PATTERN: CPT 27447 denied 1 times for missing prior authorization (CO-15) by MEDICARE. $4,660.51 impact. Recommendation: Add 'authorization_number' as a required field for CPT 27447 in medicare.json payer config in Project 1. Claims with this CPT and no auth number will be flagged before submission.",
+      "config_change": {
+        "file": "payer_configs/medicare.json",
+        "change": {
+          "field": "authorization_number",
+          "error_code": "MED_AUTH_27447",
+          "message": "MEDICARE requires prior authorization for CPT 27447.",
+          "severity": "CRITICAL",
+          "edi_segment": "REF",
+          "condition": "procedure_code == '27447'"
+        },
+        "rationale": "CO-15 prior auth denial observed 1x for MEDICARE + CPT 27447"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_HUMANA_43239_41BA33",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "HUMANA",
+      "carc_code": "29",
+      "affected_cpt": "43239",
+      "denial_count": 1,
+      "revenue_impact": 4371.3,
+      "recommendation": "TIMELY FILING PATTERN: 1 claims denied (CO-29) for HUMANA. $4,371.30 lost. Recommendation: Reduce HUMANA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for HUMANA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for HUMANA",
+        "rationale": "1 claims exceeded HUMANA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_BCBS_43239_08C905",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "BCBS",
+      "carc_code": "97",
+      "affected_cpt": "43239",
+      "denial_count": 1,
+      "revenue_impact": 4160.57,
+      "recommendation": "BUNDLING PATTERN: CPT 43239 denied 1 times for bundling (CO-97/CO-4) by BCBS. $4,160.57 impact. Recommendation: Add CPT 43239 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '43239' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 1x for BCBS"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_MEDICARE_27447_FF61D1",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "MEDICARE",
+      "carc_code": "18",
+      "affected_cpt": "27447",
+      "denial_count": 1,
+      "revenue_impact": 4070.01,
+      "recommendation": "DENIAL PATTERN (CARC 18): 1 claims denied for MEDICARE + CPT 27447. $4,070.01 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_MEDICARE_22612_A07733",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "MEDICARE",
+      "carc_code": "18",
+      "affected_cpt": "22612",
+      "denial_count": 1,
+      "revenue_impact": 3640.87,
+      "recommendation": "DENIAL PATTERN (CARC 18): 1 claims denied for MEDICARE + CPT 22612. $3,640.87 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_96_MEDICARE_43239_3AA601",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "COVERAGE",
+      "payer": "MEDICARE",
+      "carc_code": "96",
+      "affected_cpt": "43239",
+      "denial_count": 1,
+      "revenue_impact": 3517.14,
+      "recommendation": "DENIAL PATTERN (CARC 96): 1 claims denied for MEDICARE + CPT 43239. $3,517.14 impact. Category: COVERAGE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 96 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_50_MEDICARE_27447_CFE504",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "MEDICAL_NECESSITY",
+      "payer": "MEDICARE",
+      "carc_code": "50",
+      "affected_cpt": "27447",
+      "denial_count": 1,
+      "revenue_impact": 3257.36,
+      "recommendation": "MEDICAL NECESSITY PATTERN: CPT 27447 denied 1 times for medical necessity (CO-50/CO-57) by MEDICARE. $3,257.36 impact. Recommendation: Add CPT 27447 to 'medical_necessity_scrutiny' in routing_configs/cpt_risk.json. Claims with this code will route to REVIEW queue for diagnosis/documentation check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '27447' to risk_categories.medical_necessity_scrutiny.codes",
+        "rationale": "CO-50 medical necessity denial observed 1x for MEDICARE"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_MEDICARE_43239_8013C7",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "MEDICARE",
+      "carc_code": "29",
+      "affected_cpt": "43239",
+      "denial_count": 1,
+      "revenue_impact": 3249.96,
+      "recommendation": "TIMELY FILING PATTERN: 1 claims denied (CO-29) for MEDICARE. $3,249.96 lost. Recommendation: Reduce MEDICARE timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for MEDICARE to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for MEDICARE",
+        "rationale": "1 claims exceeded MEDICARE filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_99215_06DDD9",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "99215",
+      "denial_count": 6,
+      "revenue_impact": 3229.46,
+      "recommendation": "TIMELY FILING PATTERN: 6 claims denied (CO-29) for CIGNA. $3,229.46 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "6 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_90837_FC3AF2",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "90837",
+      "denial_count": 8,
+      "revenue_impact": 3070.43,
+      "recommendation": "TIMELY FILING PATTERN: 8 claims denied (CO-29) for CIGNA. $3,070.43 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "8 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_MEDICARE_43239_B20790",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "MEDICARE",
+      "carc_code": "97",
+      "affected_cpt": "43239",
+      "denial_count": 1,
+      "revenue_impact": 2249.87,
+      "recommendation": "BUNDLING PATTERN: CPT 43239 denied 1 times for bundling (CO-97/CO-4) by MEDICARE. $2,249.87 impact. Recommendation: Add CPT 43239 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '43239' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 1x for MEDICARE"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_99232_1C603E",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "99232",
+      "denial_count": 7,
+      "revenue_impact": 2107.0,
+      "recommendation": "TIMELY FILING PATTERN: 7 claims denied (CO-29) for CIGNA. $2,107.00 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "7 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_G0438_BE56A2",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "G0438",
+      "denial_count": 4,
+      "revenue_impact": 2076.92,
+      "recommendation": "TIMELY FILING PATTERN: 4 claims denied (CO-29) for CIGNA. $2,076.92 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "4 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_71046_2E80A0",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "71046",
+      "denial_count": 4,
+      "revenue_impact": 1770.82,
+      "recommendation": "TIMELY FILING PATTERN: 4 claims denied (CO-29) for CIGNA. $1,770.82 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "4 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_96_HUMANA_99283_20BF24",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "COVERAGE",
+      "payer": "HUMANA",
+      "carc_code": "96",
+      "affected_cpt": "99283",
+      "denial_count": 3,
+      "revenue_impact": 1709.67,
+      "recommendation": "DENIAL PATTERN (CARC 96): 3 claims denied for HUMANA + CPT 99283. $1,709.67 impact. Category: COVERAGE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 96 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_99214_B016E2",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "99214",
+      "denial_count": 3,
+      "revenue_impact": 1428.15,
+      "recommendation": "TIMELY FILING PATTERN: 3 claims denied (CO-29) for CIGNA. $1,428.15 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "3 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_15_MEDICARE_G0438_160926",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "payer_configs/medicare.json",
+      "change_type": "ADD_RULE",
+      "denial_category": "PRIOR_AUTH",
+      "payer": "MEDICARE",
+      "carc_code": "15",
+      "affected_cpt": "G0438",
+      "denial_count": 2,
+      "revenue_impact": 1197.82,
+      "recommendation": "PRIOR AUTH PATTERN: CPT G0438 denied 2 times for missing prior authorization (CO-15) by MEDICARE. $1,197.82 impact. Recommendation: Add 'authorization_number' as a required field for CPT G0438 in medicare.json payer config in Project 1. Claims with this CPT and no auth number will be flagged before submission.",
+      "config_change": {
+        "file": "payer_configs/medicare.json",
+        "change": {
+          "field": "authorization_number",
+          "error_code": "MED_AUTH_G0438",
+          "message": "MEDICARE requires prior authorization for CPT G0438.",
+          "severity": "CRITICAL",
+          "edi_segment": "REF",
+          "condition": "procedure_code == 'G0438'"
+        },
+        "rationale": "CO-15 prior auth denial observed 2x for MEDICARE + CPT G0438"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_99213_D63A3D",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "99213",
+      "denial_count": 5,
+      "revenue_impact": 1188.22,
+      "recommendation": "TIMELY FILING PATTERN: 5 claims denied (CO-29) for CIGNA. $1,188.22 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "5 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_MEDICARE_99283_75D6DD",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "MEDICARE",
+      "carc_code": "97",
+      "affected_cpt": "99283",
+      "denial_count": 2,
+      "revenue_impact": 1153.0,
+      "recommendation": "BUNDLING PATTERN: CPT 99283 denied 2 times for bundling (CO-97/CO-4) by MEDICARE. $1,153.00 impact. Recommendation: Add CPT 99283 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '99283' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 2x for MEDICARE"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_15_HUMANA_G0438_DAF1E6",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "payer_configs/humana.json",
+      "change_type": "ADD_RULE",
+      "denial_category": "PRIOR_AUTH",
+      "payer": "HUMANA",
+      "carc_code": "15",
+      "affected_cpt": "G0438",
+      "denial_count": 2,
+      "revenue_impact": 1044.9,
+      "recommendation": "PRIOR AUTH PATTERN: CPT G0438 denied 2 times for missing prior authorization (CO-15) by HUMANA. $1,044.90 impact. Recommendation: Add 'authorization_number' as a required field for CPT G0438 in humana.json payer config in Project 1. Claims with this CPT and no auth number will be flagged before submission.",
+      "config_change": {
+        "file": "payer_configs/humana.json",
+        "change": {
+          "field": "authorization_number",
+          "error_code": "HUM_AUTH_G0438",
+          "message": "HUMANA requires prior authorization for CPT G0438.",
+          "severity": "CRITICAL",
+          "edi_segment": "REF",
+          "condition": "procedure_code == 'G0438'"
+        },
+        "rationale": "CO-15 prior auth denial observed 2x for HUMANA + CPT G0438"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_50_AETNA_99214_612F2A",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "MEDICAL_NECESSITY",
+      "payer": "AETNA",
+      "carc_code": "50",
+      "affected_cpt": "99214",
+      "denial_count": 3,
+      "revenue_impact": 1022.83,
+      "recommendation": "MEDICAL NECESSITY PATTERN: CPT 99214 denied 3 times for medical necessity (CO-50/CO-57) by AETNA. $1,022.83 impact. Recommendation: Add CPT 99214 to 'medical_necessity_scrutiny' in routing_configs/cpt_risk.json. Claims with this code will route to REVIEW queue for diagnosis/documentation check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '99214' to risk_categories.medical_necessity_scrutiny.codes",
+        "rationale": "CO-50 medical necessity denial observed 3x for AETNA"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_96_HUMANA_99214_AE4BF5",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "COVERAGE",
+      "payer": "HUMANA",
+      "carc_code": "96",
+      "affected_cpt": "99214",
+      "denial_count": 3,
+      "revenue_impact": 1002.4,
+      "recommendation": "DENIAL PATTERN (CARC 96): 3 claims denied for HUMANA + CPT 99214. $1,002.40 impact. Category: COVERAGE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 96 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_HUMANA_99215_CDA916",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "HUMANA",
+      "carc_code": "18",
+      "affected_cpt": "99215",
+      "denial_count": 2,
+      "revenue_impact": 968.47,
+      "recommendation": "DENIAL PATTERN (CARC 18): 2 claims denied for HUMANA + CPT 99215. $968.47 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_50_MEDICARE_99215_CAB336",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "MEDICAL_NECESSITY",
+      "payer": "MEDICARE",
+      "carc_code": "50",
+      "affected_cpt": "99215",
+      "denial_count": 2,
+      "revenue_impact": 912.27,
+      "recommendation": "MEDICAL NECESSITY PATTERN: CPT 99215 denied 2 times for medical necessity (CO-50/CO-57) by MEDICARE. $912.27 impact. Recommendation: Add CPT 99215 to 'medical_necessity_scrutiny' in routing_configs/cpt_risk.json. Claims with this code will route to REVIEW queue for diagnosis/documentation check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '99215' to risk_categories.medical_necessity_scrutiny.codes",
+        "rationale": "CO-50 medical necessity denial observed 2x for MEDICARE"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_BCBS_99214_34FFBD",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "BCBS",
+      "carc_code": "29",
+      "affected_cpt": "99214",
+      "denial_count": 2,
+      "revenue_impact": 864.85,
+      "recommendation": "TIMELY FILING PATTERN: 2 claims denied (CO-29) for BCBS. $864.85 lost. Recommendation: Reduce BCBS timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for BCBS to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for BCBS",
+        "rationale": "2 claims exceeded BCBS filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_50_AETNA_90837_63A633",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "MEDICAL_NECESSITY",
+      "payer": "AETNA",
+      "carc_code": "50",
+      "affected_cpt": "90837",
+      "denial_count": 2,
+      "revenue_impact": 849.21,
+      "recommendation": "MEDICAL NECESSITY PATTERN: CPT 90837 denied 2 times for medical necessity (CO-50/CO-57) by AETNA. $849.21 impact. Recommendation: Add CPT 90837 to 'medical_necessity_scrutiny' in routing_configs/cpt_risk.json. Claims with this code will route to REVIEW queue for diagnosis/documentation check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '90837' to risk_categories.medical_necessity_scrutiny.codes",
+        "rationale": "CO-50 medical necessity denial observed 2x for AETNA"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_MEDICARE_99232_4022C3",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "MEDICARE",
+      "carc_code": "18",
+      "affected_cpt": "99232",
+      "denial_count": 3,
+      "revenue_impact": 834.86,
+      "recommendation": "DENIAL PATTERN (CARC 18): 3 claims denied for MEDICARE + CPT 99232. $834.86 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_BCBS_99283_C39DBC",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "BCBS",
+      "carc_code": "97",
+      "affected_cpt": "99283",
+      "denial_count": 1,
+      "revenue_impact": 805.31,
+      "recommendation": "BUNDLING PATTERN: CPT 99283 denied 1 times for bundling (CO-97/CO-4) by BCBS. $805.31 impact. Recommendation: Add CPT 99283 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '99283' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 1x for BCBS"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_MEDICARE_71046_C2E416",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "MEDICARE",
+      "carc_code": "18",
+      "affected_cpt": "71046",
+      "denial_count": 2,
+      "revenue_impact": 801.75,
+      "recommendation": "DENIAL PATTERN (CARC 18): 2 claims denied for MEDICARE + CPT 71046. $801.75 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_AETNA_90837_8F9C27",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "AETNA",
+      "carc_code": "29",
+      "affected_cpt": "90837",
+      "denial_count": 2,
+      "revenue_impact": 773.49,
+      "recommendation": "TIMELY FILING PATTERN: 2 claims denied (CO-29) for AETNA. $773.49 lost. Recommendation: Reduce AETNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for AETNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for AETNA",
+        "rationale": "2 claims exceeded AETNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_50_BCBS_99283_B990C6",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "MEDICAL_NECESSITY",
+      "payer": "BCBS",
+      "carc_code": "50",
+      "affected_cpt": "99283",
+      "denial_count": 1,
+      "revenue_impact": 741.42,
+      "recommendation": "MEDICAL NECESSITY PATTERN: CPT 99283 denied 1 times for medical necessity (CO-50/CO-57) by BCBS. $741.42 impact. Recommendation: Add CPT 99283 to 'medical_necessity_scrutiny' in routing_configs/cpt_risk.json. Claims with this code will route to REVIEW queue for diagnosis/documentation check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '99283' to risk_categories.medical_necessity_scrutiny.codes",
+        "rationale": "CO-50 medical necessity denial observed 1x for BCBS"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_50_CIGNA_71046_1725A9",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "MEDICAL_NECESSITY",
+      "payer": "CIGNA",
+      "carc_code": "50",
+      "affected_cpt": "71046",
+      "denial_count": 1,
+      "revenue_impact": 711.86,
+      "recommendation": "MEDICAL NECESSITY PATTERN: CPT 71046 denied 1 times for medical necessity (CO-50/CO-57) by CIGNA. $711.86 impact. Recommendation: Add CPT 71046 to 'medical_necessity_scrutiny' in routing_configs/cpt_risk.json. Claims with this code will route to REVIEW queue for diagnosis/documentation check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '71046' to risk_categories.medical_necessity_scrutiny.codes",
+        "rationale": "CO-50 medical necessity denial observed 1x for CIGNA"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_HUMANA_99283_36A30A",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "HUMANA",
+      "carc_code": "18",
+      "affected_cpt": "99283",
+      "denial_count": 1,
+      "revenue_impact": 699.24,
+      "recommendation": "DENIAL PATTERN (CARC 18): 1 claims denied for HUMANA + CPT 99283. $699.24 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_MEDICARE_99214_F26BD4",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "MEDICARE",
+      "carc_code": "18",
+      "affected_cpt": "99214",
+      "denial_count": 2,
+      "revenue_impact": 660.66,
+      "recommendation": "DENIAL PATTERN (CARC 18): 2 claims denied for MEDICARE + CPT 99214. $660.66 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_50_BCBS_G0438_6E857B",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "MEDICAL_NECESSITY",
+      "payer": "BCBS",
+      "carc_code": "50",
+      "affected_cpt": "G0438",
+      "denial_count": 1,
+      "revenue_impact": 648.17,
+      "recommendation": "MEDICAL NECESSITY PATTERN: CPT G0438 denied 1 times for medical necessity (CO-50/CO-57) by BCBS. $648.17 impact. Recommendation: Add CPT G0438 to 'medical_necessity_scrutiny' in routing_configs/cpt_risk.json. Claims with this code will route to REVIEW queue for diagnosis/documentation check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add 'G0438' to risk_categories.medical_necessity_scrutiny.codes",
+        "rationale": "CO-50 medical necessity denial observed 1x for BCBS"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_15_AETNA_99214_3478A8",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "payer_configs/aetna.json",
+      "change_type": "ADD_RULE",
+      "denial_category": "PRIOR_AUTH",
+      "payer": "AETNA",
+      "carc_code": "15",
+      "affected_cpt": "99214",
+      "denial_count": 2,
+      "revenue_impact": 645.13,
+      "recommendation": "PRIOR AUTH PATTERN: CPT 99214 denied 2 times for missing prior authorization (CO-15) by AETNA. $645.13 impact. Recommendation: Add 'authorization_number' as a required field for CPT 99214 in aetna.json payer config in Project 1. Claims with this CPT and no auth number will be flagged before submission.",
+      "config_change": {
+        "file": "payer_configs/aetna.json",
+        "change": {
+          "field": "authorization_number",
+          "error_code": "AET_AUTH_99214",
+          "message": "AETNA requires prior authorization for CPT 99214.",
+          "severity": "CRITICAL",
+          "edi_segment": "REF",
+          "condition": "procedure_code == '99214'"
+        },
+        "rationale": "CO-15 prior auth denial observed 2x for AETNA + CPT 99214"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_BCBS_71046_3E974F",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "BCBS",
+      "carc_code": "97",
+      "affected_cpt": "71046",
+      "denial_count": 1,
+      "revenue_impact": 625.6,
+      "recommendation": "BUNDLING PATTERN: CPT 71046 denied 1 times for bundling (CO-97/CO-4) by BCBS. $625.60 impact. Recommendation: Add CPT 71046 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '71046' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 1x for BCBS"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_MEDICARE_99214_A4E85B",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "MEDICARE",
+      "carc_code": "97",
+      "affected_cpt": "99214",
+      "denial_count": 2,
+      "revenue_impact": 612.14,
+      "recommendation": "BUNDLING PATTERN: CPT 99214 denied 2 times for bundling (CO-97/CO-4) by MEDICARE. $612.14 impact. Recommendation: Add CPT 99214 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '99214' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 2x for MEDICARE"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_50_MEDICARE_G0438_8027AB",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "MEDICAL_NECESSITY",
+      "payer": "MEDICARE",
+      "carc_code": "50",
+      "affected_cpt": "G0438",
+      "denial_count": 1,
+      "revenue_impact": 599.73,
+      "recommendation": "MEDICAL NECESSITY PATTERN: CPT G0438 denied 1 times for medical necessity (CO-50/CO-57) by MEDICARE. $599.73 impact. Recommendation: Add CPT G0438 to 'medical_necessity_scrutiny' in routing_configs/cpt_risk.json. Claims with this code will route to REVIEW queue for diagnosis/documentation check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add 'G0438' to risk_categories.medical_necessity_scrutiny.codes",
+        "rationale": "CO-50 medical necessity denial observed 1x for MEDICARE"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_96_AETNA_99215_74DFE2",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "COVERAGE",
+      "payer": "AETNA",
+      "carc_code": "96",
+      "affected_cpt": "99215",
+      "denial_count": 1,
+      "revenue_impact": 594.73,
+      "recommendation": "DENIAL PATTERN (CARC 96): 1 claims denied for AETNA + CPT 99215. $594.73 impact. Category: COVERAGE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 96 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_15_BCBS_99215_DB9606",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "payer_configs/bcbs.json",
+      "change_type": "ADD_RULE",
+      "denial_category": "PRIOR_AUTH",
+      "payer": "BCBS",
+      "carc_code": "15",
+      "affected_cpt": "99215",
+      "denial_count": 1,
+      "revenue_impact": 583.6,
+      "recommendation": "PRIOR AUTH PATTERN: CPT 99215 denied 1 times for missing prior authorization (CO-15) by BCBS. $583.60 impact. Recommendation: Add 'authorization_number' as a required field for CPT 99215 in bcbs.json payer config in Project 1. Claims with this CPT and no auth number will be flagged before submission.",
+      "config_change": {
+        "file": "payer_configs/bcbs.json",
+        "change": {
+          "field": "authorization_number",
+          "error_code": "BCB_AUTH_99215",
+          "message": "BCBS requires prior authorization for CPT 99215.",
+          "severity": "CRITICAL",
+          "edi_segment": "REF",
+          "condition": "procedure_code == '99215'"
+        },
+        "rationale": "CO-15 prior auth denial observed 1x for BCBS + CPT 99215"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_BCBS_71046_111586",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "BCBS",
+      "carc_code": "18",
+      "affected_cpt": "71046",
+      "denial_count": 1,
+      "revenue_impact": 583.27,
+      "recommendation": "DENIAL PATTERN (CARC 18): 1 claims denied for BCBS + CPT 71046. $583.27 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_CIGNA_71046_D411A4",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "CIGNA",
+      "carc_code": "18",
+      "affected_cpt": "71046",
+      "denial_count": 1,
+      "revenue_impact": 574.24,
+      "recommendation": "DENIAL PATTERN (CARC 18): 1 claims denied for CIGNA + CPT 71046. $574.24 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_80053_E9C8A1",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "80053",
+      "denial_count": 7,
+      "revenue_impact": 569.98,
+      "recommendation": "TIMELY FILING PATTERN: 7 claims denied (CO-29) for CIGNA. $569.98 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "7 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_18_MEDICARE_90837_AC64FE",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "DUPLICATE",
+      "payer": "MEDICARE",
+      "carc_code": "18",
+      "affected_cpt": "90837",
+      "denial_count": 2,
+      "revenue_impact": 557.54,
+      "recommendation": "DENIAL PATTERN (CARC 18): 2 claims denied for MEDICARE + CPT 90837. $557.54 impact. Category: DUPLICATE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 18 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_96_AETNA_71046_49C704",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "general",
+      "change_type": "REVIEW",
+      "denial_category": "COVERAGE",
+      "payer": "AETNA",
+      "carc_code": "96",
+      "affected_cpt": "71046",
+      "denial_count": 1,
+      "revenue_impact": 527.21,
+      "recommendation": "DENIAL PATTERN (CARC 96): 1 claims denied for AETNA + CPT 71046. $527.21 impact. Category: COVERAGE. Manual review recommended to determine appropriate upstream rule change.",
+      "config_change": {
+        "file": "general",
+        "change": "Manual review required",
+        "rationale": "CARC 96 denial pattern requires domain expert review"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_15_BCBS_71046_9AB3FD",
+      "target_project": "PROJECT_1_VALIDATION",
+      "target_config_file": "payer_configs/bcbs.json",
+      "change_type": "ADD_RULE",
+      "denial_category": "PRIOR_AUTH",
+      "payer": "BCBS",
+      "carc_code": "15",
+      "affected_cpt": "71046",
+      "denial_count": 1,
+      "revenue_impact": 512.08,
+      "recommendation": "PRIOR AUTH PATTERN: CPT 71046 denied 1 times for missing prior authorization (CO-15) by BCBS. $512.08 impact. Recommendation: Add 'authorization_number' as a required field for CPT 71046 in bcbs.json payer config in Project 1. Claims with this CPT and no auth number will be flagged before submission.",
+      "config_change": {
+        "file": "payer_configs/bcbs.json",
+        "change": {
+          "field": "authorization_number",
+          "error_code": "BCB_AUTH_71046",
+          "message": "BCBS requires prior authorization for CPT 71046.",
+          "severity": "CRITICAL",
+          "edi_segment": "REF",
+          "condition": "procedure_code == '71046'"
+        },
+        "rationale": "CO-15 prior auth denial observed 1x for BCBS + CPT 71046"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_97_HUMANA_71046_EF3E98",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/cpt_risk.json",
+      "change_type": "ADD_CPT_RISK",
+      "denial_category": "BUNDLING",
+      "payer": "HUMANA",
+      "carc_code": "97",
+      "affected_cpt": "71046",
+      "denial_count": 1,
+      "revenue_impact": 505.78,
+      "recommendation": "BUNDLING PATTERN: CPT 71046 denied 1 times for bundling (CO-97/CO-4) by HUMANA. $505.78 impact. Recommendation: Add CPT 71046 to 'bundling_risk' category in routing_configs/cpt_risk.json. This will increase risk score for claims with this code, routing them to REVIEW queue for modifier -59 check before submission.",
+      "config_change": {
+        "file": "routing_configs/cpt_risk.json",
+        "change": "Add '71046' to risk_categories.bundling_risk.codes array",
+        "rationale": "CO-97/CO-4 bundling denial observed 1x for HUMANA"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_85025_7551B1",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "85025",
+      "denial_count": 6,
+      "revenue_impact": 328.28,
+      "recommendation": "TIMELY FILING PATTERN: 6 claims denied (CO-29) for CIGNA. $328.28 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "6 claims exceeded CIGNA filing window in this batch"
+      }
+    },
+    {
+      "recommendation_id": "FEEDBACK_29_CIGNA_36415_D8F942",
+      "target_project": "PROJECT_2_ROUTING",
+      "target_config_file": "routing_configs/payer_risk.json",
+      "change_type": "UPDATE_THRESHOLD",
+      "denial_category": "TIMELY_FILING",
+      "payer": "CIGNA",
+      "carc_code": "29",
+      "affected_cpt": "36415",
+      "denial_count": 5,
+      "revenue_impact": 248.93,
+      "recommendation": "TIMELY FILING PATTERN: 5 claims denied (CO-29) for CIGNA. $248.93 lost. Recommendation: Reduce CIGNA timely filing urgency threshold in routing_configs/thresholds.json. Increase 'warning_days_remaining' from 30 to 45 days for CIGNA to give billing team more advance warning.",
+      "config_change": {
+        "file": "routing_configs/thresholds.json",
+        "change": "Increase timely_filing_urgency.warning_days_remaining to 45 for CIGNA",
+        "rationale": "5 claims exceeded CIGNA filing window in this batch"
+      }
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "description": "CARC code to denial category mapping. Based on CMS X12 835 CARC definitions.",
+  "group_code_descriptions": {
+    "CO": "Contractual Obligation — provider write-off per contract",
+    "PR": "Patient Responsibility — bill the patient",
+    "PI": "Payer Initiated — payer policy reduction",
+    "OA": "Other Adjustments — does not fit CO/PR/PI"
+  },
+  "carc_categories": {
+    "TIMELY_FILING": {
+      "codes": ["29"],
+      "description": "CO-29: Filing deadline exceeded. Non-recoverable.",
+      "recoverable": false,
+      "action": "Write off. Document for upstream timely filing monitoring."
+    },
+    "BUNDLING": {
+      "codes": ["97", "4", "7", "8", "9", "10", "11", "12"],
+      "description": "CO-97/4: Service bundled with another procedure. Payer considers it included.",
+      "recoverable": true,
+      "action": "Appeal with modifier -59 (distinct procedure) if documented separately."
+    },
+    "PRIOR_AUTH": {
+      "codes": ["15", "197", "278"],
+      "description": "CO-15: Prior authorization required or missing.",
+      "recoverable": true,
+      "action": "Obtain retroactive authorization or appeal with clinical documentation."
+    },
+    "MEDICAL_NECESSITY": {
+      "codes": ["50", "57", "150", "167", "173"],
+      "description": "CO-50/57: Service not medically necessary per payer policy.",
+      "recoverable": true,
+      "action": "Appeal with clinical notes and supporting diagnosis documentation."
+    },
+    "DUPLICATE": {
+      "codes": ["18"],
+      "description": "OA-18: Exact duplicate claim submitted.",
+      "recoverable": false,
+      "action": "Verify original claim status. Do not resubmit."
+    },
+    "COVERAGE": {
+      "codes": ["96", "27", "119", "204", "205"],
+      "description": "CO-96/27: Service not covered under patient plan.",
+      "recoverable": false,
+      "action": "Bill patient if non-covered service. Verify benefits at eligibility check."
+    },
+    "CONTRACTUAL": {
+      "codes": ["45", "253", "3"],
+      "description": "CO-45: Charge exceeds fee schedule/contracted rate. Expected write-off.",
+      "recoverable": false,
+      "action": "Post contractual adjustment. No appeal needed."
+    },
+    "PATIENT_DEDUCTIBLE": {
+      "codes": ["1"],
+      "description": "PR-1: Deductible amount — patient responsibility.",
+      "recoverable": false,
+      "action": "Bill patient for deductible amount."
+    },
+    "PATIENT_COINSURANCE": {
+      "codes": ["2"],
+      "description": "PR-2: Coinsurance amount — patient responsibility.",
+      "recoverable": false,
+      "action": "Bill patient for coinsurance."
+    },
+    "PATIENT_COPAY": {
+      "codes": ["3"],
+      "description": "PR-3: Copay amount — patient responsibility.",
+      "recoverable": false,
+      "action": "Collect copay from patient."
+    },
+    "TECHNICAL": {
+      "codes": ["16", "17", "19", "31", "55", "58", "59", "60", "66", "109", "125"],
+      "description": "Technical denial — NPI, eligibility, or format error.",
+      "recoverable": true,
+      "action": "Correct technical error and resubmit. Check Project 1 validation rules."
+    },
+    "REVERSAL": {
+      "codes": ["72", "253"],
+      "description": "PR/OA: Previously paid claim reversed or taken back.",
+      "recoverable": true,
+      "action": "Investigate reversal reason. Appeal if unjustified."
+    }
+  }
+}

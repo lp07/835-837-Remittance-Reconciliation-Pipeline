@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.env
+venv/
+.venv/
+.DS_Store
+.pytest_cache/
+data/claims_837.csv
+data/remittance_835.csv
+data/sample_output/reconciliation_report_*.csv
+data/sample_output/underpayment_pipeline_*.csv
+data/sample_output/denial_analysis_*.csv
+data/sample_output/feedback_recommendations_*.json
