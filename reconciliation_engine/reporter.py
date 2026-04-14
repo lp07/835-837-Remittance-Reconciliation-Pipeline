@@ -1,3 +1,8 @@
+# =============================================================================
+# Copyright (c) 2025 Lisa Patel | github.com/lp07
+# Original portfolio project. Unauthorized commercial use prohibited.
+# Attribution required for any use, modification, or distribution.
+# =============================================================================
 """
 reporter.py — Reconciliation Report Generator
 
@@ -168,23 +173,28 @@ class ReconciliationReporter:
         underpaid = [r for r in results if r.status == ReconciliationStatus.UNDERPAYMENT]
         denials = [r for r in results if r.status == ReconciliationStatus.DENIAL]
 
-        print("\n" + "="*65)
+        print("
+" + "="*65)
         print("  835/837 REMITTANCE RECONCILIATION SUMMARY")
         print("="*65)
         print(f"  Total Claims:          {total}")
         print(f"  Total Billed:          ${total_billed:>12,.2f}")
         print(f"  Total Paid:            ${total_paid:>12,.2f}")
         print(f"  Collection Rate:       {round(total_paid/total_billed*100,1) if total_billed else 0}%")
-        print(f"\n  RECONCILIATION STATUS:")
+        print(f"
+  RECONCILIATION STATUS:")
         for status, data in sorted(by_status.items()):
             pct = round(data['count'] / total * 100, 1)
             print(f"    {status:<22} {data['count']:>4} ({pct:>5.1f}%)  ${data['billed']:>12,.2f}")
-        print(f"\n  RECOVERY PIPELINE:")
+        print(f"
+  RECOVERY PIPELINE:")
         print(f"    Underpaid claims:    {len(underpaid)}")
         print(f"    Recovery amount:     ${total_recovery:>12,.2f}")
         print(f"    Denied claims:       {len(denials)}")
         print(f"    Denied revenue:      ${sum(r.billed_amount for r in denials):>12,.2f}")
-        print(f"\n  FEEDBACK LOOP:")
+        print(f"
+  FEEDBACK LOOP:")
         print(f"    Recommendations:     {len(recommendations)}")
         print(f"    Affected revenue:    ${sum(r.revenue_impact for r in recommendations):>12,.2f}")
-        print("="*65 + "\n")
+        print("="*65 + "
+")

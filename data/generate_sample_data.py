@@ -1,3 +1,8 @@
+# =============================================================================
+# Copyright (c) 2025 Lisa Patel | github.com/lp07
+# Original portfolio project. Unauthorized commercial use prohibited.
+# Attribution required for any use, modification, or distribution.
+# =============================================================================
 """
 generate_sample_data.py — Synthetic 837 Claims + 835 Remittance Generator
 
@@ -197,5 +202,6 @@ if __name__ == "__main__":
     remit_df.to_csv("data/remittance_835.csv", index=False)
     print(f"Generated {len(claims_df)} claims → data/claims_837.csv")
     print(f"Generated {len(remit_df)} remittances → data/remittance_835.csv")
-    print(f"\nClaims with remittance: {len(remit_df)}")
+    print(f"
+Claims with remittance: {len(remit_df)}")
     print(f"Pending (no remittance): {len(claims_df) - len(remit_df)}")
